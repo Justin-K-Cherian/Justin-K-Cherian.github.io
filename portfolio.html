@@ -1,0 +1,1211 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Justin K Cherian | Portfolio</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+
+/* ================= RESET ================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#050505;
+    color:#f5f0e6;
+    font-family:'Inter',sans-serif;
+    overflow-x:hidden;
+}
+
+/* ================= GRID BACKGROUND ================= */
+
+body::before{
+    content:'';
+    position:fixed;
+    inset:0;
+    background:
+    linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+    background-size:65px 65px;
+    z-index:-3;
+}
+
+body::after{
+    content:'';
+    position:fixed;
+    inset:0;
+    background:
+    radial-gradient(circle at top right, rgba(198,166,107,.08), transparent 30%);
+    z-index:-2;
+}
+
+/* ================= CURSOR GLOW ================= */
+
+.cursor-glow{
+    position:fixed;
+    width:350px;
+    height:350px;
+    background:radial-gradient(circle, rgba(198,166,107,.18), transparent 70%);
+    pointer-events:none;
+    z-index:-1;
+    transform:translate(-50%,-50%);
+}
+
+/* ================= SIDEBAR ================= */
+
+.sidebar{
+    position:fixed;
+    left:0;
+    top:0;
+    width:250px;
+    height:100vh;
+    background:#0a0d14;
+    border-right:1px solid rgba(255,255,255,.08);
+    padding:40px 30px;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+    z-index:1000;
+}
+
+.logo-dot{
+    width:10px;
+    height:10px;
+    background:#c6a66b;
+    border-radius:50%;
+    margin-bottom:20px;
+}
+
+.sidebar h1{
+    font-size:32px;
+    font-family:'Playfair Display', serif;
+    margin-bottom:10px;
+}
+
+.sidebar p{
+    font-size:14px;
+    color:#b9b9b9;
+    letter-spacing:2px;
+}
+
+.nav{
+    margin-top:60px;
+}
+
+.nav a{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    color:#d4d4d4;
+    text-decoration:none;
+    margin:24px 0;
+    transition:.3s;
+}
+
+.nav a:hover{
+    color:#c6a66b;
+    transform:translateX(5px);
+}
+
+/* ================= MAIN ================= */
+
+.main{
+    margin-left:250px;
+    width:calc(100% - 250px);
+}
+
+/* ================= HERO ================= */
+
+.hero{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:80px;
+    gap:50px;
+}
+
+.hero-text{
+    width:55%;
+}
+
+.hero-text h2{
+    font-size:85px;
+    line-height:1.05;
+    font-family:'Playfair Display', serif;
+    font-weight:500;
+}
+
+.hero-text p{
+    margin-top:30px;
+    color:#c2c2c2;
+    line-height:1.9;
+    max-width:650px;
+}
+
+.hero-image{
+    width:450px;
+    height:650px;
+    border-radius:50% 50% 45% 45%;
+    overflow:hidden;
+    border:1px solid rgba(255,255,255,.08);
+    animation:floaty 5s ease-in-out infinite;
+}
+
+.hero-image img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+/* ================= SOCIAL BUTTONS ================= */
+
+.hero-socials{
+    margin-top:40px;
+    display:flex;
+    gap:18px;
+    flex-wrap:wrap;
+}
+
+.social-btn{
+    padding:14px 24px;
+    border:1px solid rgba(255,255,255,.1);
+    border-radius:50px;
+    text-decoration:none;
+    color:#f5f0e6;
+    background:#101522;
+    transition:.4s;
+}
+
+.social-btn:hover{
+    background:#c6a66b;
+    color:#000;
+    transform:translateY(-4px);
+    box-shadow:0 10px 30px rgba(198,166,107,.25);
+}
+
+/* ================= SECTION ================= */
+
+section{
+    padding:100px 80px;
+}
+
+.section-title small{
+    color:#c6a66b;
+    letter-spacing:4px;
+    text-transform:uppercase;
+}
+
+.section-title h2{
+    font-size:65px;
+    margin-top:15px;
+    font-family:'Playfair Display', serif;
+    position:relative;
+    display:inline-block;
+}
+
+.section-title h2::after{
+    content:'';
+    position:absolute;
+    left:0;
+    bottom:-10px;
+    width:0%;
+    height:2px;
+    background:#c6a66b;
+    transition:1s ease;
+}
+
+.section-title.active h2::after{
+    width:100%;
+}
+
+/* ================= ABOUT ================= */
+
+.about-content{
+    margin-top:40px;
+    max-width:850px;
+    line-height:2;
+    color:#c6c6c6;
+    font-size:17px;
+}
+
+/* ================= EXPERIENCE ================= */
+
+.timeline{
+    margin-top:60px;
+}
+
+.timeline-item{
+    border-left:1px solid rgba(255,255,255,.15);
+    padding-left:30px;
+    margin-bottom:45px;
+    position:relative;
+}
+
+.timeline-item::before{
+    content:'';
+    width:14px;
+    height:14px;
+    background:#c6a66b;
+    border-radius:50%;
+    position:absolute;
+    left:-7px;
+    top:0;
+}
+
+.timeline-item h3{
+    font-size:28px;
+    margin-bottom:10px;
+}
+
+.timeline-item p{
+    color:#c5c5c5;
+    line-height:1.8;
+}
+
+/* ================= PROJECTS ================= */
+
+.projects-grid{
+    margin-top:60px;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+    gap:30px;
+}
+
+.project-card{
+    background:#0c1019;
+    border:1px solid rgba(255,255,255,.08);
+    border-radius:25px;
+    overflow:hidden;
+    transition:.5s;
+    cursor:pointer;
+    position:relative;
+}
+
+.project-card:hover{
+    transform:translateY(-10px);
+    border-color:#c6a66b;
+}
+
+.project-card img{
+    width:100%;
+    height:250px;
+    object-fit:cover;
+    transition:1s ease;
+}
+
+.project-card:hover img{
+    transform:scale(1.1);
+}
+
+.project-info{
+    padding:25px;
+}
+
+.project-info h3{
+    font-size:28px;
+    margin-bottom:12px;
+    font-family:'Playfair Display', serif;
+}
+
+.project-info p{
+    color:#bfbfbf;
+    line-height:1.7;
+}
+
+/* ================= MODAL ================= */
+
+.modal{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.92);
+    display:none;
+    align-items:center;
+    justify-content:center;
+    z-index:5000;
+    padding:40px;
+}
+
+.modal-content{
+    width:95%;
+    max-width:1100px;
+    background:#0b0f16;
+    border-radius:30px;
+    padding:40px;
+    position:relative;
+    overflow-y:auto;
+    max-height:90vh;
+}
+
+.close-btn{
+    position:absolute;
+    top:20px;
+    right:20px;
+    font-size:28px;
+    cursor:pointer;
+}
+
+.modal h2{
+    font-size:55px;
+    margin-bottom:20px;
+    font-family:'Playfair Display', serif;
+}
+
+.modal p{
+    color:#d2d2d2;
+    line-height:1.9;
+    margin-bottom:25px;
+}
+
+.tech-stack{
+    display:flex;
+    gap:12px;
+    flex-wrap:wrap;
+    margin-bottom:30px;
+}
+
+.tech-stack span{
+    padding:10px 18px;
+    background:#151c29;
+    border-radius:50px;
+    border:1px solid rgba(255,255,255,.08);
+}
+
+.project-buttons{
+    margin-bottom:35px;
+}
+
+.project-btn{
+    display:inline-block;
+    padding:15px 28px;
+    border-radius:50px;
+    background:#c6a66b;
+    color:#000;
+    text-decoration:none;
+    font-weight:600;
+    transition:.4s;
+}
+
+.project-btn:hover{
+    transform:translateY(-5px);
+    box-shadow:0 15px 40px rgba(198,166,107,.3);
+}
+
+.project-gallery{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:20px;
+}
+
+.project-gallery img{
+    width:100%;
+    border-radius:20px;
+}
+
+/* ================= SKILLS ================= */
+
+.skills-wrapper{
+    margin-top:70px;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(380px,1fr));
+    gap:25px;
+}
+
+.skill-card{
+    background:#0d1320;
+    border-radius:22px;
+    padding:30px;
+    border:1px solid rgba(255,255,255,.08);
+}
+
+.skill-card h3{
+    margin-bottom:25px;
+    letter-spacing:3px;
+    color:#c6a66b;
+    font-size:14px;
+}
+
+.skill-tags{
+    display:flex;
+    flex-wrap:wrap;
+    gap:15px;
+}
+
+.skill-tags span{
+    padding:12px 18px;
+    background:#1b2333;
+    border-radius:50px;
+    color:#cfcfcf;
+    transition:.3s;
+}
+
+.skill-tags span:hover{
+    background:#c6a66b;
+    color:#000;
+}
+
+.bars{
+    margin-top:60px;
+}
+
+.bar{
+    margin-bottom:35px;
+}
+
+.bar-title{
+    display:flex;
+    justify-content:space-between;
+    margin-bottom:10px;
+}
+
+.progress{
+    width:100%;
+    height:4px;
+    background:#1d1d1d;
+}
+
+.progress div{
+    height:100%;
+    background:#c6a66b;
+    width:0;
+    transition:2s ease;
+}
+
+/* ================= CONTACT ================= */
+
+.contact{
+    text-align:center;
+}
+
+.contact h2{
+    font-size:70px;
+    margin-bottom:20px;
+    font-family:'Playfair Display', serif;
+}
+
+.contact p{
+    color:#c9c9c9;
+    line-height:2;
+}
+
+.contact-box{
+    margin-top:50px;
+    display:flex;
+    flex-direction:column;
+    gap:22px;
+    align-items:center;
+}
+
+.contact-link{
+    text-decoration:none;
+    color:#f5f0e6;
+    background:#101522;
+    border:1px solid rgba(255,255,255,.08);
+    padding:18px 28px;
+    border-radius:18px;
+    transition:.4s;
+    min-width:320px;
+}
+
+.contact-link:hover{
+    background:#c6a66b;
+    color:#000;
+    transform:translateY(-5px);
+}
+
+/* ================= ANIMATIONS ================= */
+
+.reveal{
+    opacity:0;
+    transform:translateY(80px);
+    transition:1s ease;
+}
+
+.reveal.active{
+    opacity:1;
+    transform:translateY(0);
+}
+
+.highlight-text{
+    color:rgba(255,255,255,0.15);
+    background:linear-gradient(
+        90deg,
+        #f5f0e6 0%,
+        #f5f0e6 50%,
+        rgba(255,255,255,0.15) 100%
+    );
+    background-size:200% 100%;
+    background-position:100% 0;
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+@keyframes floaty{
+    0%{transform:translateY(0px);}
+    50%{transform:translateY(-15px);}
+    100%{transform:translateY(0px);}
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media(max-width:1100px){
+
+    .sidebar{
+        display:none;
+    }
+
+    .main{
+        margin-left:0;
+        width:100%;
+    }
+
+    .hero{
+        flex-direction:column;
+        text-align:center;
+    }
+
+    .hero-text{
+        width:100%;
+    }
+
+    .hero-text h2{
+        font-size:55px;
+    }
+
+    .hero-image{
+        width:320px;
+        height:450px;
+    }
+
+    section{
+        padding:80px 30px;
+    }
+
+    .contact h2{
+        font-size:45px;
+    }
+}
+
+@media(max-width:700px){
+
+    .hero-text h2{
+        font-size:42px;
+    }
+
+    .section-title h2{
+        font-size:42px;
+    }
+
+    .modal h2{
+        font-size:38px;
+    }
+
+    .skills-wrapper{
+        grid-template-columns:1fr;
+    }
+
+    .contact-link{
+        min-width:100%;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="cursor-glow"></div>
+
+<!-- ================= SIDEBAR ================= -->
+
+<div class="sidebar">
+
+    <div>
+
+        <div class="logo-dot"></div>
+
+        <h1 class="highlight-text">Justin K Cherian</h1>
+
+        <p>COMPUTER ENGINEERING STUDENT</p>
+
+        <div class="nav">
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#experience">Experience</a>
+            <a href="#projects">Projects</a>
+            <a href="#skills">Skills</a>
+            <a href="#contact">Contact</a>
+        </div>
+
+    </div>
+
+</div>
+
+<!-- ================= MAIN ================= -->
+
+<div class="main">
+
+<!-- HERO -->
+
+<section class="hero reveal" id="home">
+
+    <div class="hero-text">
+
+        <h2 class="highlight-text">
+            JUSTIN K CHERIAN
+        </h2>
+
+        <p>
+            A passionate Computer Engineering student building elegant solutions to complex problems.
+        </p>
+
+        <div class="hero-socials">
+
+            <a href="https://www.linkedin.com/in/justin-k-cherian"
+               target="_blank"
+               class="social-btn">
+                LinkedIn
+            </a>
+
+            <a href="https://github.com/Justin-K-Cherian"
+               target="_blank"
+               class="social-btn">
+                GitHub
+            </a>
+
+            <a href="mailto:justincherian2005@gmail.com"
+               class="social-btn">
+                Email
+            </a>
+
+        </div>
+
+    </div>
+
+    <div class="hero-image">
+     <img src="images/jstn.jpg" alt="Justin">
+    </div>
+
+</section>
+
+<!-- ABOUT -->
+
+<section id="about" class="reveal">
+
+    <div class="section-title">
+        <small>Who is Justin?</small>
+        <h2 class="highlight-text">About Me</h2>
+    </div>
+
+    <div class="about-content">
+        Final-year B.Tech Computer Science student with hands-on experience in full-stack development, data science, and event
+coordination. Eager to bring technical problem-solving and a collaborative work ethic to a professional environment where growth
+and impact matter.
+        <br><br>
+        My interests include full-stack development, UI/UX design, machine learning, and scalable systems.
+        I enjoy turning complex ideas into minimal, user-friendly experiences.
+    </div>
+
+</section>
+
+<!-- EXPERIENCE -->
+
+<section id="experience" class="reveal">
+
+    <div class="section-title">
+        <small>Background</small>
+        <h2 class="highlight-text">Experience</h2>
+    </div>
+
+    <div class="timeline">
+
+        <div class="timeline-item">
+            <h3>Flutter Developer Intern</h3>
+            <p>Genzee Technologies</p>
+        </div>
+
+        <div class="timeline-item">
+            <h3>Machine Learning & Data Analysis Intern</h3>
+            <p>Archon Solutions</p>
+        </div>
+
+        <div class="timeline-item">
+            <h3>Education</h3>
+            <p>4th Year Computer Engineering Student — KTU MBITS</p>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- PROJECTS -->
+
+<section id="projects" class="reveal">
+
+    <div class="section-title">
+        <small>Featured Work</small>
+        <h2 class="highlight-text">Projects</h2>
+    </div>
+
+    <div class="projects-grid">
+
+        <div class="project-card" onclick="openModal('booking')">
+
+            <img src="images/BOOKIT.jpg">
+
+            <div class="project-info">
+                <h3>Centralized Booking System</h3>
+
+                <p>
+                    Smart booking platform for managing campus resources and facilities.
+                </p>
+            </div>
+
+        </div>
+
+        <div class="project-card" onclick="openModal('todo')">
+
+            <img src="https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?q=80&w=1200&auto=format&fit=crop">
+
+            <div class="project-info">
+                <h3>To Do Tracker</h3>
+
+                <p>
+                    Personalized productivity web application for managing tasks efficiently.
+                </p>
+            </div>
+
+        </div>
+
+        <div class="project-card" onclick="openModal('eda')">
+
+            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1200&auto=format&fit=crop">
+
+            <div class="project-info">
+                <h3>Stock Market EDA</h3>
+
+                <p>
+                    Trend & correlation analysis of AAPL, GOOGL, TSLA and MSFT stocks.
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- SKILLS -->
+
+<section id="skills" class="reveal">
+
+    <div class="section-title">
+        <small>Expertise</small>
+        <h2 class="highlight-text">My Skills</h2>
+    </div>
+
+    <div class="skills-wrapper">
+
+        <div class="skill-card">
+
+            <h3>LANGUAGES</h3>
+
+            <div class="skill-tags">
+                <span>Python</span>
+                <span>JavaScript</span>
+                <span>Java</span>
+                <span>C / C++</span>
+                <span>SQL</span>
+            </div>
+
+        </div>
+
+        <div class="skill-card">
+
+            <h3>FRONTEND</h3>
+
+            <div class="skill-tags">
+                <span>HTML / CSS</span>
+                <span>React</span>
+                
+  
+            </div>
+
+        </div>
+
+        <div class="skill-card">
+
+            <h3>BACKEND & TOOLS</h3>
+
+            <div class="skill-tags">
+            
+              
+                <span>Git / GitHub</span>
+                <span>Linux</span>
+                <span>Docker</span>
+            </div>
+
+        </div>
+
+        <div class="skill-card">
+
+            <h3>OTHER</h3>
+
+            <div class="skill-tags">
+                <span>Data Structures</span>
+                <span>Algorithms</span>
+                <span>Machine Learning</span>
+                <span>Problem Solving</span>
+                <span>Leadership</span>
+                <span>Canva</span>
+                
+
+              
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="bars">
+
+        <div class="bar">
+
+            <div class="bar-title">
+                <span>Programming</span>
+                <span>90%</span>
+            </div>
+
+            <div class="progress">
+                <div data-width="90%"></div>
+            </div>
+
+        </div>
+
+        <div class="bar">
+
+            <div class="bar-title">
+                <span>Web Development</span>
+                <span>80%</span>
+            </div>
+
+            <div class="progress">
+                <div data-width="80%"></div>
+            </div>
+
+        </div>
+
+        <div class="bar">
+
+            <div class="bar-title">
+                <span>Design & UI/UX</span>
+                <span>70%</span>
+            </div>
+
+            <div class="progress">
+                <div data-width="70%"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- CONTACT -->
+
+<section class="contact reveal" id="contact">
+
+    <h2 class="highlight-text">Reach Out to Me</h2>
+
+    <p>
+        Let's collaborate and build something extraordinary.
+    </p>
+
+    <div class="contact-box">
+
+        <a href="mailto:justincherian2005@gmail.com" class="contact-link">
+            📧 justincherian2005@gmail.com
+        </a>
+
+        <a href="tel:+917736309758" class="contact-link">
+            📞 +91 7736309758
+        </a>
+
+        <a href="https://www.linkedin.com/in/justin-k-cherian"
+           target="_blank"
+           class="contact-link">
+            🔗 LinkedIn Profile
+        </a>
+
+        <a href="https://github.com/Justin-K-Cherian"
+           target="_blank"
+           class="contact-link">
+            💻 GitHub Profile
+        </a>
+
+    </div>
+
+</section>
+
+</div>
+
+<!-- ================= PROJECT MODALS ================= -->
+
+<div class="modal" id="booking">
+
+    <div class="modal-content">
+
+        <div class="close-btn" onclick="closeModal('booking')">✕</div>
+
+        <h2>Centralized Booking System</h2>
+
+        <div class="tech-stack">
+            <span>HTML</span>
+            <span>CSS</span>
+            <span>JavaScript</span>
+            <span>Firebase</span>
+        </div>
+
+        <p>
+            A centralized booking system developed for MBITS Campus to manage seminar halls,
+            labs, auditoriums and other campus facilities with admin approval workflows.
+        </p>
+
+        <div class="project-buttons">
+            <a href="https://github.com/Justin-K-Cherian/BOOKIT"
+               target="_blank"
+               class="project-btn">
+                View GitHub Repository
+            </a>
+        </div>
+
+        <div class="project-gallery">
+
+            <img src="images/BOOKIT1.png">
+
+            <img src="images/bookit3.png">
+            <img src="images/bookit2.png">
+            <img src="images/bookit3.png">
+            <img src="images/bookit4.png">
+            <img src="images/bookit5.png">
+        </div>
+
+    </div>
+
+</div>
+
+<div class="modal" id="todo">
+
+    <div class="modal-content">
+
+        <div class="close-btn" onclick="closeModal('todo')">✕</div>
+
+        <h2>To Do Tracker</h2>
+
+        <div class="tech-stack">
+            <span>React</span>
+            <span>Tailwind</span>
+            <span>Firebase</span>
+        </div>
+
+        <p>
+            Personalized productivity web application for tracking tasks,
+            organizing schedules, and improving workflow management.
+        </p>
+
+        <div class="project-buttons">
+            <a href="https://github.com/Justin-K-Cherian/task-manager"
+               target="_blank"
+               class="project-btn">
+                View GitHub Repository
+            </a>
+        </div>
+
+        <div class="project-gallery">
+
+            <img src="images/tm1.png">
+
+            <img src="images/tm2.png">
+            <img src="images/tm3.png">
+            <img src="images/tm4.png">          
+
+        </div>
+
+    </div>
+
+</div>
+
+<div class="modal" id="eda">
+
+    <div class="modal-content">
+
+        <div class="close-btn" onclick="closeModal('eda')">✕</div>
+
+        <h2>Stock Market EDA</h2>
+
+        <div class="tech-stack">
+            <span>Python</span>
+            <span>Pandas</span>
+            <span>Matplotlib</span>
+            <span>Machine Learning</span>
+        </div>
+
+        <p>
+            Exploratory Data Analysis on major tech stocks including
+            AAPL, GOOGL, TSLA and MSFT with trend analysis and
+            correlation visualizations.
+        </p>
+
+        <div class="project-buttons">
+            <a href="https://github.com/Justin-K-Cherian/stock-market-analysis"
+               target="_blank"
+               class="project-btn">
+                View GitHub Repository
+            </a>
+        </div>
+
+        <div class="project-gallery">
+
+            <img src="images/stock.png">
+
+          
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- ================= SCRIPT ================= -->
+
+<script>
+
+/* ================= MODAL ================= */
+
+function openModal(id){
+    document.getElementById(id).style.display='flex';
+}
+
+function closeModal(id){
+    document.getElementById(id).style.display='none';
+}
+
+window.onclick=function(e){
+
+    document.querySelectorAll('.modal').forEach(modal=>{
+
+        if(e.target===modal){
+            modal.style.display='none';
+        }
+
+    });
+
+}
+
+/* ================= REVEAL ================= */
+
+const reveals=document.querySelectorAll('.reveal');
+
+window.addEventListener('scroll',()=>{
+
+    reveals.forEach(section=>{
+
+        const top=section.getBoundingClientRect().top;
+
+        if(top < window.innerHeight-120){
+            section.classList.add('active');
+        }
+
+    });
+
+});
+
+/* ================= HIGHLIGHT TEXT ================= */
+
+const highlights=document.querySelectorAll('.highlight-text');
+
+window.addEventListener('scroll',()=>{
+
+    highlights.forEach(text=>{
+
+        const rect=text.getBoundingClientRect();
+
+        let percent=1-(rect.top/window.innerHeight);
+
+        percent=Math.max(0,Math.min(percent,1));
+
+        text.style.backgroundPosition=
+        `${100-(percent*100)}% 0`;
+
+    });
+
+});
+
+/* ================= CURSOR GLOW ================= */
+
+const glow=document.querySelector('.cursor-glow');
+
+window.addEventListener('mousemove',(e)=>{
+
+    glow.style.left=e.clientX+'px';
+    glow.style.top=e.clientY+'px';
+
+});
+
+/* ================= PROGRESS BAR ================= */
+
+const progressBars=document.querySelectorAll('.progress div');
+
+window.addEventListener('scroll',()=>{
+
+    progressBars.forEach(bar=>{
+
+        const top=bar.getBoundingClientRect().top;
+
+        if(top < window.innerHeight-50){
+
+            bar.style.width=bar.dataset.width;
+
+        }
+
+    });
+
+});
+
+/* ================= SECTION TITLES ================= */
+
+const titles=document.querySelectorAll('.section-title');
+
+window.addEventListener('scroll',()=>{
+
+    titles.forEach(title=>{
+
+        const top=title.getBoundingClientRect().top;
+
+        if(top < window.innerHeight-100){
+            title.classList.add('active');
+        }
+
+    });
+
+});
+
+/* ================= INITIAL TRIGGER ================= */
+
+window.dispatchEvent(new Event('scroll'));
+
+</script>
+
+</body>
+</html>
